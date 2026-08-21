@@ -4,28 +4,28 @@
    ============================================ */
 
 :root {
-  /* 主题色系统（JS 可通过 --hue 调色） */
-  --hue: 210;
-  --accent: hsl(var(--hue) 92% 62%);
-  --accent-soft: hsl(var(--hue) 90% 55% / 0.15);
-  --accent-2: hsl(calc(var(--hue) + 55) 88% 64%);
-  --accent-3: hsl(calc(var(--hue) + 110) 80% 70%);
+  /* 主题色系统（JS 可通过 --hue 调色）琥珀暖光方案 */
+  --hue: 34;
+  --accent: hsl(var(--hue) 92% 52%);
+  --accent-soft: hsl(var(--hue) 90% 50% / 0.14);
+  --accent-2: hsl(calc(var(--hue) - 12) 95% 48%);
+  --accent-3: hsl(calc(var(--hue) + 26) 88% 54%);
   --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
 
-  /* 背景与文字 */
-  --bg: #0a0e14;
-  --bg-2: #0e1420;
-  --card: rgba(20, 28, 44, 0.72);
-  --card-solid: #131b2c;
-  --card-border: rgba(148, 163, 184, 0.14);
-  --text: #e6edf7;
-  --text-dim: #8fa0b8;
-  --text-faint: #5b6b84;
+  /* 背景与文字（深炭暖调） */
+  --bg: #15120d;
+  --bg-2: #1a1610;
+  --card: rgba(30, 26, 18, 0.72);
+  --card-solid: #1e1a12;
+  --card-border: rgba(245, 240, 230, 0.12);
+  --text: #f5f0e6;
+  --text-dim: #b3a489;
+  --text-faint: #7d7158;
 
   --radius: 14px;
   --radius-sm: 8px;
-  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-  --glow: 0 0 24px var(--accent-soft), 0 0 60px hsl(var(--hue) 90% 55% / 0.08);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  --glow: 0 0 24px hsl(var(--hue) 90% 50% / 0.16), 0 0 60px hsl(var(--hue) 90% 45% / 0.08);
   --font-mono: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
 }
 

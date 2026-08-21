@@ -12,7 +12,7 @@
   right: 0;
   z-index: 100;
   backdrop-filter: blur(14px);
-  background: rgba(10, 14, 20, 0.78);
+  background: rgba(21, 18, 13, 0.8);
   border-bottom: 1px solid var(--card-border);
   transition: background 0.3s;
 }
@@ -297,8 +297,8 @@
 
 .cover-agent {
   background:
-    radial-gradient(120% 160% at 80% -20%, hsl(280 85% 60% / 0.45), transparent 60%),
-    linear-gradient(135deg, #2a1c3d, #181028);
+    radial-gradient(120% 160% at 80% -20%, hsl(350 85% 62% / 0.42), transparent 60%),
+    linear-gradient(135deg, #2e1518, #1c0e10);
 }
 
 .cover-collab {
