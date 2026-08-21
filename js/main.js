@@ -72,37 +72,45 @@
   gsap.registerPlugin(ScrollTrigger);
 
   // 1. Opening Animation：首屏强视觉进场（boot 结束后）
-  const bootTl = gsap.timeline({ delay: 2.1, defaults: { ease: 'power3.out' } });
+  const bootTl = gsap.timeline({ delay: 1.9, defaults: { ease: 'power3.out' } });
   bootTl
-    .from('.avatar-wrap', { scale: 0.4, opacity: 0, duration: 1.1, ease: 'back.out(1.6)' })
-    .from('.hero-name', { y: 110, opacity: 0, duration: 1.2 }, '-=0.85')
-    .from('.hero-typing', { y: 46, opacity: 0, duration: 0.9, filter: 'blur(8px)' }, '-=0.7')
-    .from('.hero-slogan', { y: 64, opacity: 0, duration: 1.15, filter: 'blur(14px)' }, '-=0.85')
-    .from('.hero-meta', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
-    .from('.hero-actions .btn', { y: 36, opacity: 0, stagger: 0.12, duration: 0.7 }, '-=0.5')
-    .from('.daily-quote', { opacity: 0, duration: 0.8 }, '-=0.2');
+    .from('.avatar-wrap', { scale: 0.4, opacity: 0, duration: 0.9, ease: 'back.out(1.6)' })
+    .from('.hero-name', { y: 110, opacity: 0, duration: 1.0 }, '-=0.7')
+    .from('.hero-typing', { y: 46, opacity: 0, duration: 0.7, filter: 'blur(8px)' }, '-=0.6')
+    .from('.hero-slogan', { y: 64, opacity: 0, duration: 0.9, filter: 'blur(14px)' }, '-=0.7')
+    .from('.hero-meta', { y: 30, opacity: 0, duration: 0.6 }, '-=0.5')
+    .from('.hero-actions .btn', { y: 36, opacity: 0, stagger: 0.1, duration: 0.55 }, '-=0.4')
+    .from('.daily-quote', { opacity: 0, duration: 0.6 }, '-=0.2');
 
-  // 2. 每个模块：英文标题大幅进场 → 中文标题遮罩揭开 → 内容 stagger 依次出现
+  // 2. 每个模块：英文标题大幅进场 → 中文标题遮罩揭开 → 描述跟进
   gsap.utils.toArray('.section').forEach((section) => {
     const en = section.querySelector('.section-en');
     const zh = section.querySelector('.section-title');
     const desc = section.querySelector('.section-desc');
-    const items = section.querySelectorAll(
-      '.archive, .ability-card, .tag-cloud, .wf-step, .tl-item, .filter-bar, .contact-desc, .contact-links'
-    );
+    const filterBar = section.querySelector('.filter-bar');
 
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: section, start: 'top 72%', once: true }
+      scrollTrigger: { trigger: section, start: 'top 80%', once: true }
     });
-    if (en) tl.from(en, { y: 90, x: -24, opacity: 0, duration: 1.15 }, 0);
-    if (zh) tl.from(zh, { clipPath: 'inset(0% 100% 0% 0%)', duration: 1.0, ease: 'power4.inOut' }, '-=0.9');
-    if (desc) tl.from(desc, { y: 34, opacity: 0, duration: 0.8 }, '-=0.65');
-    if (items.length) {
-      tl.from(items, { y: 72, opacity: 0, duration: 1.05, stagger: 0.1, ease: 'power3.out' }, '-=0.55');
-    }
+    if (en) tl.from(en, { y: 70, x: -20, opacity: 0, duration: 0.85 }, 0);
+    if (zh) tl.from(zh, { clipPath: 'inset(0% 100% 0% 0%)', duration: 0.8, ease: 'power4.inOut' }, '-=0.7');
+    if (desc) tl.from(desc, { y: 28, opacity: 0, duration: 0.65 }, '-=0.5');
+    if (filterBar) tl.from(filterBar, { y: 40, opacity: 0, duration: 0.6 }, '-=0.4');
   });
 
-  // 3. 档案封面：clip-path 遮罩揭开 + 轻微 parallax
+  // 3. 卡片依次出现（ScrollTrigger.batch 官方方案，快节奏）
+  const animItems = gsap.utils.toArray('.archive, .ability-card, .wf-step, .tl-item, .cloud-tag');
+  gsap.set(animItems, { y: 56, opacity: 0 });
+  ScrollTrigger.batch(animItems, {
+    start: 'top 90%',
+    once: true,
+    onEnter: (batch) => gsap.to(batch, {
+      y: 0, opacity: 1, duration: 0.7, stagger: 0.07, ease: 'power3.out',
+      clearProps: 'transform,opacity'
+    })
+  });
+
+  // 4. 档案封面：clip-path 遮罩揭开 + 轻微 parallax
   gsap.utils.toArray('.archive-cover').forEach((cover) => {
     const img = cover.querySelector('.cover-img');
     if (!img) return;
@@ -110,14 +118,14 @@
       { clipPath: 'inset(0% 0% 100% 0%)', yPercent: -6 },
       {
         clipPath: 'inset(0% 0% 0% 0%)', yPercent: 0,
-        duration: 1.4, ease: 'power3.inOut',
-        scrollTrigger: { trigger: cover, start: 'top 88%', once: true }
+        duration: 1.1, ease: 'power3.inOut',
+        scrollTrigger: { trigger: cover, start: 'top 90%', once: true }
       }
     );
     gsap.to(img, {
       yPercent: 10,
       ease: 'none',
-      scrollTrigger: { trigger: cover, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+      scrollTrigger: { trigger: cover, start: 'top bottom', end: 'bottom top', scrub: 0.5 }
     });
   });
 })();
@@ -141,6 +149,9 @@
       const show = filter === 'all' || cats.includes(filter);
       if (show) {
         card.classList.remove('hidden-card');
+        // 清除 GSAP 残留的 inline 样式，避免卡片保持透明/偏移
+        card.style.removeProperty('transform');
+        card.style.removeProperty('opacity');
         card.classList.remove('fade-in');
         void card.offsetWidth; // 触发重排以重启动画
         card.classList.add('fade-in');
