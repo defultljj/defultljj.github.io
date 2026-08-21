@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【你的名字】 · AI 应用开发师</title>
+  <meta name="description" content="【你的名字】的个人作品集：AI 应用开发师（可穿戴方向），专注 RAG 系统、Agent 工程与端侧 AI 应用开发。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== 顶部导航 ========== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">⚡ 【名字首字母】.dev</span>
+      <div class="nav-links">
+        <a href="#projects">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#education">经历</a>
+        <a href="#contact">联系</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== Hero 区 ========== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="avatar" src="https://github.com/defultljj.png" alt="GitHub 头像">
+      <h1>你好，我是 <span class="gradient-text">【你的名字】</span></h1>
+      <p class="hero-sub">AI 应用开发师（可穿戴方向）· 应届毕业生 · 深圳</p>
+      <p class="hero-desc">
+        专注大模型应用落地：独立搭建过 RAG 问答系统、实现过 Agent 工具调用与多轮记忆、
+        实践过 ONNX 端侧模型部署。目标是把 AI 能力真正做成<span class="highlight">可用、稳定、可交付</span>的产品。
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Agent</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">ONNX</span>
+        <span class="tag">OpenCV</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="resume/简历.pdf" target="_blank">📄 下载简历</a>
+        <a class="btn btn-ghost" href="https://github.com/defultljj" target="_blank">GitHub 主页</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 项目区 ========== -->
+  <main>
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">项目作品 <span class="section-en">/ Projects</span></h2>
+        <p class="section-desc">从 RAG 平台改造到 Java 全栈，每个项目都完整走过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环</p>
+
+        <div class="card-grid">
+
+          <!-- 项目 1：lc-chat-chat（核心） -->
+          <article class="card card-featured">
+            <div class="card-top">
+              <span class="card-icon">🧠</span>
+              <span class="card-featured-badge">核心项目</span>
+            </div>
+            <h3 class="card-title">Langchain-Chatchat 源码研读与改造</h3>
+            <p class="card-desc">
+              38K Star 开源 RAG 平台本地化部署：修复 WebUI bug、配置 DeepSeek API + bge-m3 Embedding + FAISS 知识库，
+              沉淀 7 条部署踩坑记录与 Bad Case 分析实验。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">Python</span>
+              <span class="tag tag-sm">RAG</span>
+              <span class="tag tag-sm">FastAPI</span>
+              <span class="tag tag-sm">FAISS</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/lc-chat-chat" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 2：VisionLab -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">✋</span>
+            </div>
+            <h3 class="card-title">MediaPipe + OpenCV 实时手势识别</h3>
+            <p class="card-desc">
+              手部 21 关键点检测 + 手指计数算法（拇指按左右手方向特殊处理），
+              支持双手同检与置信度调节，实践「模型推理 + 应用逻辑」端侧 AI 开发模式。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">Python</span>
+              <span class="tag tag-sm">OpenCV</span>
+              <span class="tag tag-sm">MediaPipe</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/VisionLab" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 3：Campus-Trading -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">🏪</span>
+            </div>
+            <h3 class="card-title">校园二手交易平台（AI 助手「小营」）</h3>
+            <p class="card-desc">
+              Spring Boot + Vue3 前后端分离，集成 LangChain4j 实现基于实时数据库的智能问答助手，
+              SSE token 级流式输出，7 张数据表完整 CRUD + 事务处理。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">Java</span>
+              <span class="tag tag-sm">Spring Boot</span>
+              <span class="tag tag-sm">Vue3</span>
+              <span class="tag tag-sm">LangChain4j</span>
+              <span class="tag tag-sm">SSE</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/Campus-Trading" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 4：spring-demo-1 -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">🏢</span>
+            </div>
+            <h3 class="card-title">人力资源管理系统（自然语言驱动）</h3>
+            <p class="card-desc">
+              Spring Boot + MyBatis Plus + JWT 权限体系，自研 AIDispatcherService 指令分发层：
+              用户用自然语言操作系统（「添加员工张三」），关键词规则 + DeepSeek API 双路意图解析。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">Java</span>
+              <span class="tag tag-sm">Spring Boot</span>
+              <span class="tag tag-sm">DeepSeek API</span>
+              <span class="tag tag-sm">JWT</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/spring-demo-1" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 5：vibe-1 -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">📒</span>
+            </div>
+            <h3 class="card-title">AI 辅助开发的记账 App</h3>
+            <p class="card-desc">
+              与 AI Agent 协作完成「需求拆解 → 架构设计 → 分模块实现 → 测试验收」全流程，
+              实践 AI 时代的工程师工作方式，沉淀个人 AI 协作开发工作流。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">Node.js</span>
+              <span class="tag tag-sm">Jest</span>
+              <span class="tag tag-sm">AI 协作开发</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/vibe-1" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 6：dsh-vision-integration -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">👁️</span>
+            </div>
+            <h3 class="card-title">DeepSeek Harness 视觉路由集成</h3>
+            <p class="card-desc">
+              为纯文本模型的 DeepSeek Harness 集成视觉路由能力：插件部署、验证与故障预案，
+              探索多模态能力的工程化接入方案。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">PowerShell</span>
+              <span class="tag tag-sm">多模态</span>
+              <span class="tag tag-sm">集成</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/dsh-vision-integration" target="_blank">查看源码 →</a>
+          </article>
+
+          <!-- 项目 7：lc-rag -->
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">📚</span>
+            </div>
+            <h3 class="card-title">RAG 检索增强生成学习项目</h3>
+            <p class="card-desc">
+              文档加载 → 切分 → 向量化 → 检索 → 重排 → 生成的完整 RAG 链路实践，
+              为掌握生产级问答系统打下基础。
+            </p>
+            <div class="card-tags">
+              <span class="tag tag-sm">HTML</span>
+              <span class="tag tag-sm">RAG</span>
+              <span class="tag tag-sm">检索</span>
+            </div>
+            <a class="card-link" href="https://github.com/defultljj/lc-rag" target="_blank">查看源码 →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 技能区 ========== -->
+    <section id="skills" class="section section-alt">
+      <div class="section-inner">
+        <h2 class="section-title">技能栈 <span class="section-en">/ Skills</span></h2>
+
+        <div class="skill-grid">
+          <div class="skill-item">
+            <h4>💻 编程语言</h4>
+            <p>Python（FastAPI / PyTorch）、Java、了解 C++，日常使用 Git 做版本管理</p>
+          </div>
+          <div class="skill-item">
+            <h4>🤖 大模型应用开发</h4>
+            <p>Prompt 工程（Few-shot / CoT / 结构化输出）、独立搭建 RAG 系统、Function Calling / Tool Use 机制、LangChain 工作流编排</p>
+          </div>
+          <div class="skill-item">
+            <h4>🛠️ AI Agent 工程</h4>
+            <p>理解 ReAct 范式，实现过任务规划 + 工具调用 + 多轮对话记忆的 Agent 系统</p>
+          </div>
+          <div class="skill-item">
+            <h4>📱 端侧 AI</h4>
+            <p>PyTorch → ONNX 转换流程、ONNX Runtime 推理与图优化、INT8 量化（PTQ）及精度/时延对比、了解 NCNN / TFLite</p>
+          </div>
+          <div class="skill-item">
+            <h4>🧮 理论基础</h4>
+            <p>Transformer、注意力机制、KV Cache、位置编码（RoPE），能联系端侧部署的工程约束</p>
+          </div>
+          <div class="skill-item">
+            <h4>🔧 工程素养</h4>
+            <p>日志监控、Bad Case 分析、效果回归测试、异常降级方案设计</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 经历区 ========== -->
+    <section id="education" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">教育背景 <span class="section-en">/ Education</span></h2>
+        <div class="edu-card">
+          <div class="edu-left">
+            <h3>【大学名称】</h3>
+            <p>【专业，如：计算机科学与技术 / 人工智能】· 本科</p>
+          </div>
+          <div class="edu-right">
+            <span class="edu-year">【入学年】—【预计毕业年】</span>
+          </div>
+        </div>
+        <ul class="edu-detail">
+          <li>主修课程：机器学习、深度学习、自然语言处理、数据结构与算法</li>
+          <li>持续跟进 AI 前沿：系统化学习 Transformer 实现、位置编码、注意力变体等论文源码</li>
+          <li>学习产出：完整的学习笔记体系与开源项目实践（见 GitHub）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== 联系区 ========== -->
+    <section id="contact" class="section section-alt">
+      <div class="section-inner contact-inner">
+        <h2 class="section-title">联系我 <span class="section-en">/ Contact</span></h2>
+        <p class="contact-desc">对 AI 工程化落地充满热情，欢迎交流合作与机会</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="https://github.com/defultljj" target="_blank">🐙 GitHub</a>
+          <a class="btn btn-ghost" href="mailto:【你的邮箱】">✉️ 邮箱</a>
+          <a class="btn btn-ghost" href="resume/简历.pdf" target="_blank">📄 简历 PDF</a>
+        </div>
+        <p class="contact-note">求职意向：AI 应用开发师（可穿戴方向）· 深圳 · 可到岗</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 【你的名字】 · 由 GitHub Pages 托管 · <a href="https://github.com/defultljj/defultljj.github.io" target="_blank">本站源码</a></p>
+  </footer>
+
+</body>
+</html>
