@@ -432,47 +432,60 @@
   margin-bottom: 14px;
 }
 
-/* 技术细节折叠 */
+/* 技术细节：hover 时从底部滑出的覆盖层 */
 .archive-more {
-  margin-bottom: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 24px 18px;
+  background: linear-gradient(180deg, transparent 0%, rgba(19, 27, 44, 0.72) 26%, rgba(19, 27, 44, 0.97) 60%);
+  backdrop-filter: blur(7px);
+  transform: translateY(102%);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.archive-more summary {
-  cursor: pointer;
-  color: var(--text-dim);
-  font-size: 13.5px;
-  user-select: none;
-  list-style: none;
-  transition: color 0.2s;
+.archive:hover .archive-more {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.archive-more summary:hover {
+.more-label {
+  font-size: 12.5px;
+  font-weight: 700;
   color: var(--accent);
-}
-
-.archive-more summary::-webkit-details-marker {
-  display: none;
-}
-
-.more-arrow {
-  display: inline-block;
-  font-size: 10px;
-  transition: transform 0.25s;
-}
-
-.archive-more[open] .more-arrow {
-  transform: rotate(180deg);
+  letter-spacing: 1.5px;
+  margin-bottom: 9px;
 }
 
 .archive-more ul {
-  margin-top: 10px;
-  padding-left: 18px;
-  color: var(--text-dim);
-  font-size: 13.5px;
+  padding-left: 17px;
+  color: var(--text);
+  font-size: 13px;
 }
 
 .archive-more li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  line-height: 1.55;
+}
+
+/* 触屏设备：hover 不存在，点击卡片切换显示 */
+@media (hover: none) {
+  .archive-more {
+    transform: translateY(102%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+  }
+
+  .archive.more-open .archive-more {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .archive-links {

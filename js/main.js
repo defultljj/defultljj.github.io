@@ -182,6 +182,17 @@
   });
 })();
 
+/* ---------- 触屏设备：点击卡片切换技术细节 ---------- */
+(function moreOnTouch() {
+  if (!matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.archive').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      card.classList.toggle('more-open');
+    });
+  });
+})();
+
 /* ---------- 重点项目 tilt 效果（桌面端） ---------- */
 (function tiltCards() {
   const isTouch = matchMedia('(pointer: coarse)').matches;

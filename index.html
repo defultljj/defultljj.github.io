@@ -99,15 +99,15 @@
               <div class="archive-tags">
                 <span class="tag">Python</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">FAISS</span>
               </div>
-              <details class="archive-more">
-                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
                 <ul>
                   <li>修复 <code>use_mcp</code> UnboundLocalError：未勾选 Agent 时变量未初始化即被引用</li>
                   <li>解决 pandas 1.3.x 与 Python 3.11 编译冲突（锁定 3.10 环境）</li>
                   <li>Bad Case 1：qwen2.5:3b 伪造 MCP 工具调用 → 小模型指令跟随弱</li>
                   <li>Bad Case 2：DeepSeek 自称 "I am Claude" → 训练数据污染，需 system prompt 约束</li>
                 </ul>
-              </details>
+              </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/lc-chat-chat" target="_blank">源码 →</a>
               </div>
@@ -135,15 +135,15 @@
               <div class="archive-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Vue3</span><span class="tag">LangChain4j</span><span class="tag">SSE</span>
               </div>
-              <details class="archive-more">
-                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
                 <ul>
                   <li>单测暴露 SQL 优先级 bug：关键词 OR 条件未括号分组导致过滤被绕过</li>
                   <li>SSE 选型：单向流式场景优于 WebSocket，OkHttp + fetch-event-source 实现</li>
                   <li>AI 助手「小营」：关键词驱动的简易 RAG，先检索数据库再让模型组织语言</li>
                   <li>排障：JDK21 下 Lombok 版本被 BOM 覆盖、Surefire 静默跳过 JUnit5</li>
                 </ul>
-              </details>
+              </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/Campus-Trading" target="_blank">源码 →</a>
               </div>
@@ -171,14 +171,14 @@
               <div class="archive-tags">
                 <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span>
               </div>
-              <details class="archive-more">
-                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
                 <ul>
                   <li>手指计数：指尖关键点与相邻关节的相对位置几何判定</li>
                   <li>拇指特殊处理：结合左右手方向判断，避免误判</li>
                   <li>摄像头视频流：帧翻转、按键退出、资源释放</li>
                 </ul>
-              </details>
+              </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/VisionLab" target="_blank">源码 →</a>
               </div>
@@ -205,6 +205,15 @@
               <div class="archive-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">DeepSeek</span><span class="tag">JWT</span>
               </div>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
+                <ul>
+                  <li>AIDispatcherService 指令分发层：关键词/正则规则 + DeepSeek API 双路意图解析</li>
+                  <li>自研 DeepSeek 调用：原生 HttpURLConnection + Gson，理解大模型 API 集成全流程</li>
+                  <li>JWT 认证拦截器 + RBAC 角色权限（RoleEnum + UserContext）</li>
+                  <li>自然语言直接操作系统业务："添加员工张三" → 规则兜底 → LLM 解析 → 执行 Service</li>
+                </ul>
+              </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/spring-demo-1" target="_blank">源码 →</a>
               </div>
@@ -230,6 +239,15 @@
               <p class="archive-desc">与 AI Agent 协作完成需求拆解 → 架构设计 → 分模块实现 → 测试验收全流程，实践 AI 时代工程师工作方式，沉淀个人 AI 协作开发工作流。</p>
               <div class="archive-tags">
                 <span class="tag">Node.js</span><span class="tag">Jest</span><span class="tag">AI 协作</span>
+              </div>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
+                <ul>
+                  <li>AI 协作全流程：需求拆解 → 架构设计 → 分模块实现 → 测试验收</li>
+                  <li>Node.js + Express + Jest 测试覆盖，分类统计与月度报表</li>
+                  <li>对 AI 生成代码的审查修正：边界条件、错误处理、性能问题</li>
+                  <li>沉淀个人「AI 协作开发」工作流：人做判断，AI 提效</li>
+                </ul>
               </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/vibe-1" target="_blank">源码 →</a>
@@ -258,14 +276,14 @@
               <div class="archive-tags">
                 <span class="tag">PowerShell</span><span class="tag">插件工程</span><span class="tag">多模态</span>
               </div>
-              <details class="archive-more">
-                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
                 <ul>
                   <li>按轮次路由：含图轮次切视觉模型，文字轮次保持原模型，成本零影响</li>
                   <li>复盘历史事故（文件竞态、JSON 编码）转化为崩溃处理手册</li>
                   <li>预检保障：动态 import 校验模块导出，杜绝 invalid plugin 崩溃</li>
                 </ul>
-              </details>
+              </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/dsh-vision-integration" target="_blank">源码 →</a>
               </div>
@@ -291,6 +309,15 @@
               <p class="archive-desc">文档加载 → 切分 → 向量化 → 检索 → 重排 → 生成的完整 RAG 链路学习实践，为掌握生产级问答系统打基础。</p>
               <div class="archive-tags">
                 <span class="tag">HTML</span><span class="tag">RAG</span><span class="tag">检索</span>
+              </div>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
+                <ul>
+                  <li>RAG 全链路：文档加载 → 切分 → 向量化 → 检索 → 重排 → 生成</li>
+                  <li>覆盖 20+ 文档格式 loader，理解多格式入库处理</li>
+                  <li>检索参数实验：Top-k、score_threshold、reranker 开关对比</li>
+                  <li>为生产级问答系统的混合检索改造（BM25 + RRF）打基础</li>
+                </ul>
               </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/lc-rag" target="_blank">源码 →</a>
