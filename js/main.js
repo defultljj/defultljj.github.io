@@ -84,10 +84,16 @@
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('reveal', 'visible');
+        e.target.classList.add('reveal');
+        // 关键：双 rAF 确保浏览器先计算隐藏态样式，再过渡到可见态
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            e.target.classList.add('visible');
+          });
+        });
         io.unobserve(e.target);
         // 动画完成后移除 reveal 类，恢复卡片 hover/tilt 的正常交互
-        setTimeout(() => e.target.classList.remove('reveal'), 1100);
+        setTimeout(() => e.target.classList.remove('reveal', 'visible'), 1200);
       }
     });
   }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
