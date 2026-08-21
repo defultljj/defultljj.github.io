@@ -3,246 +3,457 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>骆俊杰 · AI 应用开发师</title>
-  <meta name="description" content="骆俊杰的个人作品集：AI 应用开发师（可穿戴方向），专注 RAG 系统、Agent 工程与端侧 AI 应用开发。">
-  <link rel="stylesheet" href="style.css">
+  <title>JUNJIE AI LAB · 骆俊杰</title>
+  <meta name="description" content="JUNJIE AI LAB — 骆俊杰的 AI 应用实验室：RAG 检索、Agent 工程、端侧 AI、Java 全栈实验档案。">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <script src="js/main.js" defer></script>
+  <script src="js/easter-eggs.js" defer></script>
 </head>
 <body>
 
-  <!-- ========== 顶部导航 ========== -->
+  <!-- ===== 首载 Loading ===== -->
+  <div id="boot" class="boot">
+    <pre class="boot-text" id="boot-text"></pre>
+  </div>
+
+  <!-- ===== 背景画布（粒子彩蛋） ===== -->
+  <canvas id="particles"></canvas>
+  <div class="bg-grid"></div>
+
+  <!-- ===== 顶部导航 ===== -->
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-logo">⚡ LJJ.dev</span>
+      <a class="nav-logo" href="#top">⚡ JUNJIE <span>AI LAB</span></a>
       <div class="nav-links">
-        <a href="#projects">项目</a>
-        <a href="#skills">技能</a>
+        <a href="#archives">实验档案</a>
+        <a href="#abilities">能力图谱</a>
+        <a href="#workflow">方法论</a>
+        <a href="#manual">实验手册</a>
         <a href="#contact">联系</a>
       </div>
     </div>
   </nav>
 
-  <!-- ========== Hero 区 ========== -->
-  <header class="hero">
+  <!-- ===== Hero ===== -->
+  <header id="top" class="hero">
     <div class="hero-inner">
-      <img class="avatar" src="https://github.com/defultljj.png" alt="GitHub 头像">
-      <h1>你好，我是 <span class="gradient-text">骆俊杰</span></h1>
-      <p class="hero-sub">广东海洋大学 · 数据科学与大数据技术 · 本科（2023—2027）</p>
-      <p class="hero-desc">
-        专注大模型应用落地：独立搭建过 RAG 问答系统、实现过 Agent 工具调用与多轮记忆、
-        实践过 ONNX 端侧模型部署。目标是把 AI 能力真正做成<span class="highlight">可用、稳定、可交付</span>的产品。
-      </p>
-      <div class="hero-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">RAG</span>
-        <span class="tag">Agent</span>
-        <span class="tag">LangChain</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">ONNX</span>
-        <span class="tag">OpenCV</span>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://github.com/defultljj.png" alt="GitHub 头像">
       </div>
+      <h1 class="hero-name">骆俊杰</h1>
+      <p class="hero-typing">
+        <span class="typing-mark">&gt;</span>
+        <span id="typing" class="typing-text"></span><span class="typing-cursor">_</span>
+      </p>
+      <p class="hero-slogan">把大模型能力做成<span class="slogan-glow">可用、稳定、可交付</span>的产品</p>
+      <p class="hero-meta">广东海洋大学 · 数据科学与大数据技术 · 本科（2023—2027）</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="resume/简历.pdf" target="_blank">📄 下载简历</a>
-        <a class="btn btn-ghost" href="https://github.com/defultljj" target="_blank">GitHub 主页</a>
+        <a class="btn btn-ghost" href="https://github.com/defultljj" target="_blank">🐙 GitHub 主页</a>
       </div>
+      <p class="daily-quote" id="daily-quote" title="点击换一句">“RAG 的终点不是检索到文档，而是生成对答案。”</p>
     </div>
   </header>
 
-  <!-- ========== 项目区 ========== -->
+  <!-- ===== 实验档案 ===== -->
   <main>
-    <section id="projects" class="section">
+    <section id="archives" class="section">
       <div class="section-inner">
-        <h2 class="section-title">项目作品 <span class="section-en">/ Projects</span></h2>
-        <p class="section-desc">从 RAG 平台改造到 Java 全栈，每个项目都完整走过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环</p>
+        <h2 class="section-title"><span class="title-bracket">[</span> 实验档案 <span class="title-bracket">]</span><span class="section-en">ARCHIVES</span></h2>
+        <p class="section-desc">7 份实验记录：从 38K Star 开源平台改造到 85 个单测驱动的全栈项目，每一份都经过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环。</p>
 
-        <div class="card-grid">
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn active" data-filter="all">全部</button>
+          <button class="filter-btn" data-filter="rag">RAG 检索</button>
+          <button class="filter-btn" data-filter="agent">Agent 工程</button>
+          <button class="filter-btn" data-filter="edge">端侧 AI</button>
+          <button class="filter-btn" data-filter="java">Java 全栈</button>
+          <button class="filter-btn" data-filter="collab">AI 协作</button>
+        </div>
 
-          <!-- 项目 1：lc-chat-chat（核心） -->
-          <article class="card card-featured">
-            <div class="card-top">
-              <span class="card-icon">🧠</span>
-              <span class="card-featured-badge">核心项目</span>
+        <div class="archives-grid" id="archives-grid">
+
+          <!-- 档案 001：lc-chat-chat -->
+          <article class="archive card-wide" data-category="rag">
+            <div class="archive-cover cover-rag">
+              <span class="archive-no">001</span>
+              <span class="archive-cover-title">RAG · LC-Chatchat</span>
             </div>
-            <h3 class="card-title">Langchain-Chatchat 源码研读与改造</h3>
-            <p class="card-desc">
-              38K Star 开源 RAG 平台本地化部署：修复 WebUI bug、配置 DeepSeek API + bge-m3 Embedding + FAISS 知识库，
-              沉淀 7 条部署踩坑记录与 Bad Case 分析实验。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">Python</span>
-              <span class="tag tag-sm">RAG</span>
-              <span class="tag tag-sm">FastAPI</span>
-              <span class="tag tag-sm">FAISS</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">Langchain-Chatchat 源码研读与改造</h3>
+                <span class="archive-status st-deployed">⚡ 已部署</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>38K★</b> 开源平台</span>
+                <span class="metric"><b>1</b> 上游 bug 修复</span>
+                <span class="metric"><b>7</b> 条踩坑记录</span>
+              </div>
+              <p class="archive-desc">38K Star 开源 RAG 平台本地化部署：修复 WebUI 上游 bug、配置 DeepSeek API + bge-m3 Embedding + FAISS 向量库，沉淀 Bad Case 分析实验。</p>
+              <div class="archive-tags">
+                <span class="tag">Python</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">FAISS</span>
+              </div>
+              <details class="archive-more">
+                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+                <ul>
+                  <li>修复 <code>use_mcp</code> UnboundLocalError：未勾选 Agent 时变量未初始化即被引用</li>
+                  <li>解决 pandas 1.3.x 与 Python 3.11 编译冲突（锁定 3.10 环境）</li>
+                  <li>Bad Case 1：qwen2.5:3b 伪造 MCP 工具调用 → 小模型指令跟随弱</li>
+                  <li>Bad Case 2：DeepSeek 自称 "I am Claude" → 训练数据污染，需 system prompt 约束</li>
+                </ul>
+              </details>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/lc-chat-chat" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/lc-chat-chat" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 2：VisionLab -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">✋</span>
+          <!-- 档案 002：Campus-Trading -->
+          <article class="archive card-wide" data-category="java collab">
+            <div class="archive-cover cover-java">
+              <span class="archive-no">002</span>
+              <span class="archive-cover-title">JAVA · Campus Trading</span>
             </div>
-            <h3 class="card-title">MediaPipe + OpenCV 实时手势识别</h3>
-            <p class="card-desc">
-              手部 21 关键点检测 + 手指计数算法（拇指按左右手方向特殊处理），
-              支持双手同检与置信度调节，实践「模型推理 + 应用逻辑」端侧 AI 开发模式。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">Python</span>
-              <span class="tag tag-sm">OpenCV</span>
-              <span class="tag tag-sm">MediaPipe</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">校园二手交易平台（AI 助手「小营」）</h3>
+                <span class="archive-status st-delivered">✅ 已交付</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>30+</b> REST 接口</span>
+                <span class="metric"><b>85</b> 单测全通过</span>
+                <span class="metric"><b>5</b> 业务 bug 修复</span>
+              </div>
+              <p class="archive-desc">Spring Boot + Vue3 全栈：LangChain4j 智能助手 SSE 流式输出、关键词驱动 RAG 回答可溯源，AI 人机协同开发，测试驱动暴露并修复 5 个业务 bug。</p>
+              <div class="archive-tags">
+                <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Vue3</span><span class="tag">LangChain4j</span><span class="tag">SSE</span>
+              </div>
+              <details class="archive-more">
+                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+                <ul>
+                  <li>单测暴露 SQL 优先级 bug：关键词 OR 条件未括号分组导致过滤被绕过</li>
+                  <li>SSE 选型：单向流式场景优于 WebSocket，OkHttp + fetch-event-source 实现</li>
+                  <li>AI 助手「小营」：关键词驱动的简易 RAG，先检索数据库再让模型组织语言</li>
+                  <li>排障：JDK21 下 Lombok 版本被 BOM 覆盖、Surefire 静默跳过 JUnit5</li>
+                </ul>
+              </details>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/Campus-Trading" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/VisionLab" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 3：Campus-Trading -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">🏪</span>
+          <!-- 档案 003：VisionLab -->
+          <article class="archive card-wide" data-category="edge">
+            <div class="archive-cover cover-edge">
+              <span class="archive-no">003</span>
+              <span class="archive-cover-title">EDGE · VisionLab</span>
             </div>
-            <h3 class="card-title">校园二手交易平台（AI 助手「小营」）</h3>
-            <p class="card-desc">
-              Spring Boot + Vue3 全栈：30+ REST 接口、85 个单元测试全通过（暴露并修复 5 个业务 bug）、
-              LangChain4j 智能助手 SSE 流式输出，AI 人机协同完成开发。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">Java</span>
-              <span class="tag tag-sm">Spring Boot</span>
-              <span class="tag tag-sm">Vue3</span>
-              <span class="tag tag-sm">LangChain4j</span>
-              <span class="tag tag-sm">SSE</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">MediaPipe + OpenCV 实时手势识别</h3>
+                <span class="archive-status st-delivered">✅ 已交付</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>21</b> 关键点检测</span>
+                <span class="metric"><b>0-5</b> 手指实时计数</span>
+                <span class="metric"><b>2</b> 双手同检</span>
+              </div>
+              <p class="archive-desc">MediaPipe HandLandmarker 检测手部 21 关键点，OpenCV 实时绘制骨架，实现手指计数算法（拇指按左右手方向特殊处理），实践「模型推理 + 应用逻辑」端侧 AI 模式。</p>
+              <div class="archive-tags">
+                <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span>
+              </div>
+              <details class="archive-more">
+                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+                <ul>
+                  <li>手指计数：指尖关键点与相邻关节的相对位置几何判定</li>
+                  <li>拇指特殊处理：结合左右手方向判断，避免误判</li>
+                  <li>摄像头视频流：帧翻转、按键退出、资源释放</li>
+                </ul>
+              </details>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/VisionLab" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/Campus-Trading" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 4：spring-demo-1 -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">🏢</span>
+          <!-- 档案 004：spring-demo-1 -->
+          <article class="archive" data-category="java">
+            <div class="archive-cover cover-java">
+              <span class="archive-no">004</span>
+              <span class="archive-cover-title">JAVA · HR System</span>
             </div>
-            <h3 class="card-title">人力资源管理系统（自然语言驱动）</h3>
-            <p class="card-desc">
-              Spring Boot + MyBatis Plus + JWT 权限体系，自研 AIDispatcherService 指令分发层：
-              用户用自然语言操作系统（「添加员工张三」），关键词规则 + DeepSeek API 双路意图解析。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">Java</span>
-              <span class="tag tag-sm">Spring Boot</span>
-              <span class="tag tag-sm">DeepSeek API</span>
-              <span class="tag tag-sm">JWT</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">人力资源管理系统（自然语言驱动）</h3>
+                <span class="archive-status st-delivered">✅ 已交付</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>JWT</b> + RBAC 权限</span>
+                <span class="metric"><b>双路</b> 意图解析</span>
+              </div>
+              <p class="archive-desc">Spring Boot + MyBatis Plus + JWT 权限体系。自研 AIDispatcherService 指令分发层：自然语言（「添加员工张三」）经规则 + DeepSeek API 双路解析，映射到业务 Service 执行。</p>
+              <div class="archive-tags">
+                <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">DeepSeek</span><span class="tag">JWT</span>
+              </div>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/spring-demo-1" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/spring-demo-1" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 5：vibe-1 -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">📒</span>
+          <!-- 档案 005：vibe-1 -->
+          <article class="archive" data-category="collab">
+            <div class="archive-cover cover-collab">
+              <span class="archive-no">005</span>
+              <span class="archive-cover-title">AI · Bookkeeping</span>
             </div>
-            <h3 class="card-title">AI 辅助开发的记账 App</h3>
-            <p class="card-desc">
-              与 AI Agent 协作完成「需求拆解 → 架构设计 → 分模块实现 → 测试验收」全流程，
-              实践 AI 时代的工程师工作方式，沉淀个人 AI 协作开发工作流。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">Node.js</span>
-              <span class="tag tag-sm">Jest</span>
-              <span class="tag tag-sm">AI 协作开发</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">AI 辅助开发的记账 App</h3>
+                <span class="archive-status st-delivered">✅ 已交付</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>全流程</b> AI 协作</span>
+                <span class="metric"><b>Jest</b> 测试覆盖</span>
+              </div>
+              <p class="archive-desc">与 AI Agent 协作完成需求拆解 → 架构设计 → 分模块实现 → 测试验收全流程，实践 AI 时代工程师工作方式，沉淀个人 AI 协作开发工作流。</p>
+              <div class="archive-tags">
+                <span class="tag">Node.js</span><span class="tag">Jest</span><span class="tag">AI 协作</span>
+              </div>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/vibe-1" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/vibe-1" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 6：dsh-vision-integration -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">👁️</span>
+          <!-- 档案 006：dsh-vision -->
+          <article class="archive" data-category="agent">
+            <div class="archive-cover cover-agent">
+              <span class="archive-no">006</span>
+              <span class="archive-cover-title">AGENT · Vision Router</span>
             </div>
-            <h3 class="card-title">DeepSeek Harness 视觉路由集成</h3>
-            <p class="card-desc">
-              为纯文本会话模型零更换地引入 14 个视觉工具（图片问答/OCR/像素对比），
-              故障预案先行、零事故交付，沉淀插件管理应急手册。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">PowerShell</span>
-              <span class="tag tag-sm">多模态</span>
-              <span class="tag tag-sm">集成</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">DeepSeek Harness 视觉路由集成</h3>
+                <span class="archive-status st-delivered">✅ 已交付</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>14</b> 视觉工具</span>
+                <span class="metric"><b>0</b> 事故交付</span>
+                <span class="metric"><b>0</b> 模型更换</span>
+              </div>
+              <p class="archive-desc">为纯文本会话模型零更换地引入视觉能力（图片问答/OCR/像素对比），按轮次路由架构，故障预案先行，沉淀插件管理应急手册。</p>
+              <div class="archive-tags">
+                <span class="tag">PowerShell</span><span class="tag">插件工程</span><span class="tag">多模态</span>
+              </div>
+              <details class="archive-more">
+                <summary>技术细节 <span class="more-arrow">▼</span></summary>
+                <ul>
+                  <li>按轮次路由：含图轮次切视觉模型，文字轮次保持原模型，成本零影响</li>
+                  <li>复盘历史事故（文件竞态、JSON 编码）转化为崩溃处理手册</li>
+                  <li>预检保障：动态 import 校验模块导出，杜绝 invalid plugin 崩溃</li>
+                </ul>
+              </details>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/dsh-vision-integration" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/dsh-vision-integration" target="_blank">查看源码 →</a>
           </article>
 
-          <!-- 项目 7：lc-rag -->
-          <article class="card">
-            <div class="card-top">
-              <span class="card-icon">📚</span>
+          <!-- 档案 007：lc-rag -->
+          <article class="archive" data-category="rag">
+            <div class="archive-cover cover-rag">
+              <span class="archive-no">007</span>
+              <span class="archive-cover-title">RAG · Learn</span>
             </div>
-            <h3 class="card-title">RAG 检索增强生成学习项目</h3>
-            <p class="card-desc">
-              文档加载 → 切分 → 向量化 → 检索 → 重排 → 生成的完整 RAG 链路实践，
-              为掌握生产级问答系统打下基础。
-            </p>
-            <div class="card-tags">
-              <span class="tag tag-sm">HTML</span>
-              <span class="tag tag-sm">RAG</span>
-              <span class="tag tag-sm">检索</span>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">RAG 检索增强生成学习项目</h3>
+                <span class="archive-status st-exp">🧪 实验性</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>全链路</b> RAG 实践</span>
+                <span class="metric"><b>20+</b> 文档格式</span>
+              </div>
+              <p class="archive-desc">文档加载 → 切分 → 向量化 → 检索 → 重排 → 生成的完整 RAG 链路学习实践，为掌握生产级问答系统打基础。</p>
+              <div class="archive-tags">
+                <span class="tag">HTML</span><span class="tag">RAG</span><span class="tag">检索</span>
+              </div>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/lc-rag" target="_blank">源码 →</a>
+              </div>
             </div>
-            <a class="card-link" href="https://github.com/defultljj/lc-rag" target="_blank">查看源码 →</a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ========== 技能区 ========== -->
-    <section id="skills" class="section section-alt">
+    <!-- ===== 能力图谱 ===== -->
+    <section id="abilities" class="section section-alt">
       <div class="section-inner">
-        <h2 class="section-title">技能栈 <span class="section-en">/ Skills</span></h2>
+        <h2 class="section-title"><span class="title-bracket">[</span> 能力图谱 <span class="title-bracket">]</span><span class="section-en">ABILITIES</span></h2>
+        <p class="section-desc">四域能力与核心技能标签</p>
 
-        <div class="skill-grid">
-          <div class="skill-item">
-            <h4>💻 编程语言</h4>
-            <p>Python（FastAPI / PyTorch）、Java、了解 C++，日常使用 Git 做版本管理</p>
+        <div class="ability-grid">
+          <div class="ability-card">
+            <h4 class="ability-title">🤖 大模型应用</h4>
+            <div class="ability-row"><span>RAG 系统搭建</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>Prompt 工程</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>Function Calling</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>Agent（ReAct）</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>LangChain 编排</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
           </div>
-          <div class="skill-item">
-            <h4>🤖 大模型应用开发</h4>
-            <p>Prompt 工程（Few-shot / CoT / 结构化输出）、独立搭建 RAG 系统、Function Calling / Tool Use 机制、LangChain 工作流编排</p>
+          <div class="ability-card">
+            <h4 class="ability-title">📱 端侧 AI</h4>
+            <div class="ability-row"><span>ONNX 模型转换</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>ONNX Runtime</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>INT8 量化（PTQ）</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>MediaPipe</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>OpenCV</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
           </div>
-          <div class="skill-item">
-            <h4>🛠️ AI Agent 工程</h4>
-            <p>理解 ReAct 范式，实现过任务规划 + 工具调用 + 多轮对话记忆的 Agent 系统</p>
+          <div class="ability-card">
+            <h4 class="ability-title">🔧 工程能力</h4>
+            <div class="ability-row"><span>Bug 定位与修复</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>Bad Case 分析</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>单元测试</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>降级方案设计</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>Git 版本管理</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
           </div>
-          <div class="skill-item">
-            <h4>📱 端侧 AI</h4>
-            <p>PyTorch → ONNX 转换流程、ONNX Runtime 推理与图优化、INT8 量化（PTQ）及精度/时延对比、了解 NCNN / TFLite</p>
+          <div class="ability-card">
+            <h4 class="ability-title">☕ 后端全栈</h4>
+            <div class="ability-row"><span>Java / Spring Boot</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>MyBatis-Plus</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>JWT + RBAC</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="ability-row"><span>Vue3 前端</span><span class="dots"><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
+            <div class="ability-row"><span>MySQL</span><span class="dots"><i></i><i></i><i></i><i></i><i></i></span></div>
           </div>
-          <div class="skill-item">
-            <h4>🧮 理论基础</h4>
-            <p>Transformer、注意力机制、KV Cache、位置编码（RoPE），能联系端侧部署的工程约束</p>
+        </div>
+
+        <div class="tag-cloud">
+          <span class="cloud-tag">Python</span><span class="cloud-tag">Java</span><span class="cloud-tag">Vue3</span>
+          <span class="cloud-tag">FastAPI</span><span class="cloud-tag">PyTorch</span><span class="cloud-tag">Git</span>
+          <span class="cloud-tag">DeepSeek</span><span class="cloud-tag">LangChain</span><span class="cloud-tag">Ollama</span>
+          <span class="cloud-tag">SSE</span><span class="cloud-tag">JUnit</span><span class="cloud-tag">Node.js</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 方法论 ===== -->
+    <section id="workflow" class="section">
+      <div class="section-inner">
+        <h2 class="section-title"><span class="title-bracket">[</span> 方法论 <span class="title-bracket">]</span><span class="section-en">WORKFLOW</span></h2>
+        <p class="section-desc">从需求到交付 — 我的 AI 工程工作流（每份实验档案都走过这条路）</p>
+
+        <div class="workflow-steps">
+          <div class="wf-step">
+            <span class="wf-num">01</span>
+            <h4>需求拆解</h4>
+            <p>模糊需求 → 模块划分、接口定义、验收标准</p>
           </div>
-          <div class="skill-item">
-            <h4>🔧 工程素养</h4>
-            <p>日志监控、Bad Case 分析、效果回归测试、异常降级方案设计</p>
+          <div class="wf-arrow">→</div>
+          <div class="wf-step">
+            <span class="wf-num">02</span>
+            <h4>方案设计</h4>
+            <p>技术选型、架构权衡、约束盘点</p>
+          </div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-step">
+            <span class="wf-num">03</span>
+            <h4>编码实现</h4>
+            <p>AI 辅助生成 + 人工审查修正边界与错误处理</p>
+          </div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-step">
+            <span class="wf-num">04</span>
+            <h4>效果评估</h4>
+            <p>指标测试、回归验证、Bad Case 收集</p>
+          </div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-step">
+            <span class="wf-num">05</span>
+            <h4>交付复盘</h4>
+            <p>文档沉淀、踩坑记录、方法论更新</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 联系区 ========== -->
-    <section id="contact" class="section section-alt">
+    <!-- ===== 实验手册 ===== -->
+    <section id="manual" class="section section-alt">
+      <div class="section-inner">
+        <h2 class="section-title"><span class="title-bracket">[</span> 实验手册 <span class="title-bracket">]</span><span class="section-en">MANUAL</span></h2>
+        <p class="section-desc">持续学习的轨迹 — 论文源码研读 → RAG 全链路 → 端侧部署</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-date">2026.07—09</span>
+            <div class="tl-content">
+              <h4>Transformer 论文源码研读</h4>
+              <p>14 份分主题学习笔记：自注意力、位置编码（RoPE）、KV Cache、推理采样、模型轻量化</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">2026.08</span>
+            <div class="tl-content">
+              <h4>RAG 全链路实践</h4>
+              <p>Langchain-Chatchat 部署改造：文档加载 → 切分 → 向量化 → 检索 → 生成</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">进行中</span>
+            <div class="tl-content">
+              <h4>端侧 AI 部署</h4>
+              <p>ONNX 转换、INT8 量化、精度/时延对比实验</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 联系 ===== -->
+    <section id="contact" class="section">
       <div class="section-inner contact-inner">
-        <h2 class="section-title">联系我 <span class="section-en">/ Contact</span></h2>
-        <p class="contact-desc">对 AI 工程化落地充满热情，欢迎交流合作与机会</p>
+        <h2 class="section-title"><span class="title-bracket">[</span> 联系 <span class="title-bracket">]</span><span class="section-en">CONTACT</span></h2>
+        <p class="contact-desc">欢迎交流 RAG、Agent 与端侧 AI 的一切话题</p>
         <div class="contact-links">
           <a class="btn btn-primary" href="https://github.com/defultljj" target="_blank">🐙 GitHub</a>
           <a class="btn btn-ghost" href="resume/简历.pdf" target="_blank">📄 简历 PDF</a>
         </div>
-        <p class="contact-note">求职意向：AI 应用开发师（可穿戴方向）· 深圳 · 可到岗</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2026 骆俊杰 · 由 GitHub Pages 托管 · <a href="https://github.com/defultljj/defultljj.github.io" target="_blank">本站源码</a></p>
+    <p>© 2026 骆俊杰 · JUNJIE AI LAB · <a href="https://github.com/defultljj/defultljj.github.io" target="_blank">本站源码</a></p>
   </footer>
 
+  <!-- ===== 彩蛋：主题色轮 ===== -->
+  <div class="egg-btn" id="hue-btn" title="调节主题色">🎨</div>
+  <div class="hue-panel" id="hue-panel">
+    <div class="hue-panel-head">主题色相 <span id="hue-value">210°</span></div>
+    <input type="range" id="hue-slider" min="0" max="360" value="210">
+  </div>
+
+  <!-- ===== 彩蛋：终端 ===== -->
+  <div class="egg-btn term-btn" id="term-btn" title="实验室终端">❯_</div>
+  <div class="terminal" id="terminal">
+    <div class="term-head">
+      <span>JUNJIE AI LAB — terminal</span>
+      <button id="term-close">✕</button>
+    </div>
+    <div class="term-body" id="term-body">
+      <p class="term-line muted">JUNJIE AI LAB v1.0 · 输入 <b>help</b> 查看命令</p>
+    </div>
+    <div class="term-input-line">
+      <span class="term-prompt">junjie@lab:~$</span>
+      <input id="term-input" type="text" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+
+  <noscript>本页面需要 JavaScript 才能完整展示。</noscript>
 </body>
 </html>

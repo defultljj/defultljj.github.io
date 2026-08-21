@@ -1,0 +1,160 @@
+/* ============================================
+   JUNJIE AI LAB · base.css
+   变量 / 重置 / 通用组件
+   ============================================ */
+
+:root {
+  /* 主题色系统（JS 可通过 --hue 调色） */
+  --hue: 210;
+  --accent: hsl(var(--hue) 92% 62%);
+  --accent-soft: hsl(var(--hue) 90% 55% / 0.15);
+  --accent-2: hsl(calc(var(--hue) + 55) 88% 64%);
+  --accent-3: hsl(calc(var(--hue) + 110) 80% 70%);
+  --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+
+  /* 背景与文字 */
+  --bg: #0a0e14;
+  --bg-2: #0e1420;
+  --card: rgba(20, 28, 44, 0.72);
+  --card-solid: #131b2c;
+  --card-border: rgba(148, 163, 184, 0.14);
+  --text: #e6edf7;
+  --text-dim: #8fa0b8;
+  --text-faint: #5b6b84;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px var(--accent-soft), 0 0 60px hsl(var(--hue) 90% 55% / 0.08);
+  --font-mono: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hue) 30% 30%);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ---------- 通用组件 ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, opacity 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 6px 22px hsl(var(--hue) 90% 55% / 0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 30px hsl(var(--hue) 90% 55% / 0.5);
+}
+
+.btn-ghost {
+  border-color: var(--card-border);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--accent-soft);
+  border: 1px solid hsl(var(--hue) 80% 55% / 0.3);
+  color: var(--accent);
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin: 2px;
+}
+
+/* 区块标题 */
+.section-title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.title-bracket {
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.section-en {
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+.section-desc {
+  color: var(--text-dim);
+  margin-bottom: 34px;
+  max-width: 720px;
+}
