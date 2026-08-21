@@ -67,16 +67,49 @@
   opacity: 1;
 }
 
-/* ---------- 滚动渐入 ---------- */
+/* ---------- 滚动渐入（错峰 + 模糊浮现） ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(44px);
+  filter: blur(8px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s ease;
+  transition-delay: calc(var(--order, 0) * 75ms);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: none;
+  filter: blur(0);
+}
+
+/* ---------- Hero 入场动画（首屏逐元素浮现） ---------- */
+.hero-inner > * {
+  opacity: 0;
+  animation: hero-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-inner > *:nth-child(1) { animation-delay: 1.6s; }
+.hero-inner > *:nth-child(2) { animation-delay: 1.72s; }
+.hero-inner > *:nth-child(3) { animation-delay: 1.84s; }
+.hero-inner > *:nth-child(4) { animation-delay: 1.96s; }
+.hero-inner > *:nth-child(5) { animation-delay: 2.08s; }
+.hero-inner > *:nth-child(6) { animation-delay: 2.2s; }
+.hero-inner > *:nth-child(7) { animation-delay: 2.32s; }
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
 }
 
 /* ---------- 动画关键帧 ---------- */

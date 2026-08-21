@@ -75,14 +75,22 @@
     targets.forEach(el => el.classList.add('visible'));
     return;
   }
+  // 错峰索引：同容器内按位置依次浮现
+  targets.forEach(el => {
+    const parent = el.parentElement;
+    const idx = parent ? Array.from(parent.children).indexOf(el) : 0;
+    el.style.setProperty('--order', String(idx % 10));
+  });
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('reveal', 'visible');
         io.unobserve(e.target);
+        // 动画完成后移除 reveal 类，恢复卡片 hover/tilt 的正常交互
+        setTimeout(() => e.target.classList.remove('reveal'), 1100);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
   targets.forEach(el => io.observe(el));
 })();
 
