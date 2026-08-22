@@ -86,7 +86,7 @@
   gsap.utils.toArray('.section').forEach((section) => {
     const en = section.querySelector('.section-en');
     const zh = section.querySelector('.section-title');
-    const desc = section.querySelector('.section-desc');
+    const desc = section.querySelector('.section-desc, .contact-desc');
     const filterBar = section.querySelector('.filter-bar');
 
     const tl = gsap.timeline({
@@ -99,7 +99,7 @@
   });
 
   // 3. 卡片依次出现（ScrollTrigger.batch 官方方案，快节奏）
-  const animItems = gsap.utils.toArray('.archive, .ability-card, .wf-step, .tl-item, .cloud-tag');
+  const animItems = gsap.utils.toArray('.archive, .ability-card, .wf-step, .tl-item, .cloud-tag, .contact-links');
   gsap.set(animItems, { y: 56, opacity: 0 });
   ScrollTrigger.batch(animItems, {
     start: 'top 90%',
