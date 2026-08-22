@@ -86,7 +86,7 @@
   gsap.utils.toArray('.section').forEach((section) => {
     const en = section.querySelector('.section-en');
     const zh = section.querySelector('.section-title');
-    const desc = section.querySelector('.section-desc, .contact-desc');
+    const desc = section.querySelector('.section-desc');
     const filterBar = section.querySelector('.filter-bar');
 
     const tl = gsap.timeline({
@@ -99,7 +99,7 @@
   });
 
   // 3. 卡片依次出现（ScrollTrigger.batch 官方方案，快节奏）
-  const animItems = gsap.utils.toArray('.archive, .ability-card, .wf-step, .tl-item, .cloud-tag, .contact-links');
+  const animItems = gsap.utils.toArray('.archive, .ability-card, .wf-step, .tl-item, .cloud-tag');
   gsap.set(animItems, { y: 56, opacity: 0 });
   ScrollTrigger.batch(animItems, {
     start: 'top 90%',
@@ -109,6 +109,24 @@
       clearProps: 'transform,opacity'
     })
   });
+
+  // 3.5 联系板块：desc 与按钮组初始隐藏，与标题同步触发浮现
+  const contactSec = document.querySelector('#contact');
+  if (contactSec) {
+    const cElems = contactSec.querySelectorAll('.contact-desc, .contact-links');
+    if (cElems.length) {
+      gsap.set(cElems, { y: 46, opacity: 0 });
+      ScrollTrigger.create({
+        trigger: contactSec,
+        start: 'top 75%',
+        once: true,
+        onEnter: () => gsap.to(cElems, {
+          y: 0, opacity: 1, duration: 0.8, stagger: 0.12,
+          ease: 'power3.out', clearProps: 'transform,opacity'
+        })
+      });
+    }
+  }
 
   // 4. 档案封面：clip-path 遮罩揭开 + 轻微 parallax
   gsap.utils.toArray('.archive-cover').forEach((cover) => {
