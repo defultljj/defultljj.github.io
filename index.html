@@ -70,7 +70,7 @@
     <section id="archives" class="section">
       <div class="section-inner">
         <h2 class="section-title"><span class="title-bracket">[</span> 实验档案 <span class="title-bracket">]</span><span class="section-en">ARCHIVES</span></h2>
-        <p class="section-desc">7 份实验记录：从 38K Star 开源平台改造到 85 个单测驱动的全栈项目，每一份都经过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环。</p>
+        <p class="section-desc">8 份实验记录：从 38K Star 开源平台改造到 85 个单测驱动的全栈项目，每一份都经过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环。</p>
 
         <div class="filter-bar" id="filter-bar">
           <button class="filter-btn active" data-filter="all">全部</button>
@@ -330,6 +330,43 @@
             </div>
           </article>
 
+          <!-- 档案 008：onnx-edge-quant-lab -->
+          <article class="archive" data-category="edge">
+            <div class="archive-cover cover-edge">
+              <img class="cover-img" src="assets/img/onnx.jpg" alt="端侧 AI 部署实验封面" loading="lazy">
+              <span class="archive-no">008</span>
+              <span class="archive-cover-title">EDGE · ONNX Quant</span>
+            </div>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">端侧 AI 部署实验（ONNX 量化 + Android 真机）</h3>
+                <span class="archive-status st-delivered">✅ 已完成</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>-74%</b> 模型体积（13.3→3.4 MiB）</span>
+                <span class="metric"><b>2.2×</b> 真机 INT8 加速</span>
+                <span class="metric"><b>+47%</b> PC 时延（VNNI 缺失）</span>
+              </div>
+              <p class="archive-desc">MobileNetV2 从 PyTorch 导出 ONNX（一致性 1.6e-7）→ INT8 PTQ 量化体积 -74% → CameraX + ORT 真机部署：ORTPerf 500+ 帧统计验证加速 2.2 倍，PC 侧慢 47% 归因 wheel 未编译 VNNI 内核。</p>
+              <div class="archive-tags">
+                <span class="tag">PyTorch</span><span class="tag">ONNX</span><span class="tag">ONNX Runtime</span><span class="tag">INT8 量化</span><span class="tag">Android</span>
+              </div>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
+                <ul>
+                  <li>PyTorch → ONNX → ORT 导出闭环：<code>dynamic_axes</code> 处理动态轴，输出一致性 1.6e-7</li>
+                  <li>MobileNetV2 PTQ/QDQ 量化：<code>per_channel</code> 需 opset ≥ 13（踩坑记录）</li>
+                  <li>SQNR 逐张量精度分析：3 张校准图，定位 34/66 层 SQNR &lt;6dB</li>
+                  <li>CameraX + ONNX Runtime Android 真机部署：ORTPerf 采集 500+ 帧时延统计</li>
+                  <li>稳健 benchmark：预热消除冷启动偏差 + 中位数抗抖动</li>
+                </ul>
+              </div>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/onnx-edge-quant-lab" target="_blank">源码 →</a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -448,7 +485,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <span class="tl-date">进行中</span>
+            <span class="tl-date">2026.08—09</span>
             <div class="tl-content">
               <h4>端侧 AI 部署</h4>
               <p>ONNX 转换、INT8 量化、精度/时延对比实验</p>

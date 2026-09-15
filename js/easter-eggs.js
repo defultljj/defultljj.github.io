@@ -52,13 +52,14 @@
   004  spring-demo-1     [java]    已交付
   005  vibe-1            [collab]  已交付
   006  dsh-vision        [agent]   已交付
-  007  lc-rag            [rag]     实验性`,
+  007  lc-rag            [rag]     实验性
+  008  onnx-edge-quant-lab [edge]  已完成`,
     'cat resume': '正在打开简历...',
     'open github': '正在打开 GitHub...',
     'ls manual': `./manual/
   transformer 源码研读  → 学习指南/
   rag 全链路部署        → Langchain-Chatchat-master/
-  端侧部署实验          → 进行中`,
+  端侧部署实验          → 已完成`,
     whoami: '骆俊杰 · AI 应用开发师 · JUNJIE AI LAB 唯一负责人',
     theme: '已打开主题色调节（右下角 🎨）',
     particles: '用法：particles on / particles off',
