@@ -70,7 +70,7 @@
     <section id="archives" class="section">
       <div class="section-inner">
         <h2 class="section-title"><span class="title-bracket">[</span> 实验档案 <span class="title-bracket">]</span><span class="section-en">ARCHIVES</span></h2>
-        <p class="section-desc">8 份实验记录：从 38K Star 开源平台改造到 85 个单测驱动的全栈项目，每一份都经过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环。</p>
+        <p class="section-desc">9 份实验记录：从 38K Star 开源平台改造到 38 张表的电商数据平台，每一份都经过「需求拆解 → 方案设计 → 编码实现 → 效果评估」闭环。</p>
 
         <div class="filter-bar" id="filter-bar">
           <button class="filter-btn active" data-filter="all">全部</button>
@@ -363,6 +363,43 @@
               </div>
               <div class="archive-links">
                 <a class="card-link" href="https://github.com/defultljj/onnx-edge-quant-lab" target="_blank">源码 →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 档案 009：mall-system -->
+          <article class="archive" data-category="java">
+            <div class="archive-cover cover-java">
+              <img class="cover-img" src="assets/img/mall.jpg" alt="电商数据管理平台封面" loading="lazy">
+              <span class="archive-no">009</span>
+              <span class="archive-cover-title">JAVA · Mall DW</span>
+            </div>
+            <div class="archive-body">
+              <div class="archive-head">
+                <h3 class="archive-title">电商数据管理平台（Spring Boot + Hive 离线数仓）</h3>
+                <span class="archive-status st-delivered">✅ 已完成</span>
+              </div>
+              <div class="archive-metrics">
+                <span class="metric"><b>38</b> 张 MySQL 表</span>
+                <span class="metric"><b>3 层</b> ODS→DWD→ADS 数仓</span>
+                <span class="metric"><b>4 大主题</b> 分析指标</span>
+              </div>
+              <p class="archive-desc">Spring Boot 电商后台 + Hive 离线数仓：ODS→DWD→ADS 加工跑在批次里，幂等重跑，发布前 3 项校验不过不放行；ECharts 分析中心呈现四个主题指标。</p>
+              <div class="archive-tags">
+                <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MyBatis-Plus</span><span class="tag">Hive</span><span class="tag">ECharts</span>
+              </div>
+              <div class="archive-more">
+                <div class="more-label">⚙ 技术细节</div>
+                <ul>
+                  <li><code>Stage2PipelineService</code> 批次模型：一次运行生成一个批次号，三步作业各写一条 <code>etl_job_log</code>（ODS 采集 7 类样本、Hive 加工 7→7、指标发布 4→4）；全部成功才置 <code>PUBLISHED</code>，异常置 <code>FAILED</code> 并把错误写进 <code>error_message</code>；每天凌晨 2 点由 <code>@Scheduled(cron="0 0 2 * * *")</code> 自动跑前一天。</li>
+                  <li>幂等重跑：每张结果表写入前按 <code>batch_no</code> 先删后插，同一批次重复执行不产生重复行。</li>
+                  <li>质量门禁：发布前跑 3 项关联完整性校验（订单-商品、行为-会员、评价-订单），结果写 <code>etl_quality_result</code>（expected=0 / actual / passed），任一项非 0 抛异常中断发布，脏数据不进下游。</li>
+                  <li>ODS 落地：GB18030 样本逐行校验字段数后转 TSV，追加 <code>source_file</code> / <code>row_number</code> / <code>ingest_time</code> 溯源列，经 WebHDFS 上传后 <code>LOAD DATA ... PARTITION (batch_date)</code> 入表；导入目标限定 <code>mall_ods.ods_*</code> 前缀与 <code>/data/mall_stage2/</code> 路径。</li>
+                  <li>RBAC 权限：用户/角色/权限点 3 张主表 + 2 张关联表；登录拦截器对未登录请求统一返回 401，写操作拦截器放行 GET、限制非管理员角色的增删改。</li>
+                </ul>
+              </div>
+              <div class="archive-links">
+                <a class="card-link" href="https://github.com/defultljj/mall-system" target="_blank">源码 →</a>
               </div>
             </div>
           </article>

@@ -53,7 +53,8 @@
   005  vibe-1            [collab]  已交付
   006  dsh-vision        [agent]   已交付
   007  lc-rag            [rag]     实验性
-  008  onnx-edge-quant-lab [edge]  已完成`,
+  008  onnx-edge-quant-lab [edge]  已完成
+  009  mall-system       [java]    已完成`,
     'cat resume': '正在打开简历...',
     'open github': '正在打开 GitHub...',
     'ls manual': `./manual/
